@@ -2,6 +2,7 @@ import express, { Router } from "express";
 import { atualizaUsuario, getAllUsuarios, getUsuarioPorId, gravaNovoUsuario } from "../../Controllers/Usuario"
 
 const router: Router = express.Router(); 
+
 router.get("/", async(req, res) => { 
     res.json(await getAllUsuarios()); 
 });

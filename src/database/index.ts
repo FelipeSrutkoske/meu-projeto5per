@@ -6,6 +6,6 @@ export async function getConnection() {
         host: "localhost",
         user: "root",
         password: "bdados749!@",
-        database: "meu-banco"
+        database: "meu_banco"
     })
 }
