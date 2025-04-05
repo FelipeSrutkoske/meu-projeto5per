@@ -84,7 +84,7 @@ export class CaminhaoDAO {
     try {
       conexao = await getConnection();
       await conexao.query(
-        "INSERT INTO caminhao (idusuario, modelo, placa, ano, ipvaPago) VALUES (?, ?, ?, ?, ?)",
+        "INSERT INTO caminhao (modelo, placa, ano, ipvaPago) VALUES (?, ?, ?, ?, ?)",
         [
           novoCaminhao.modelo,
           novoCaminhao.placa,
@@ -110,7 +110,7 @@ export class CaminhaoDAO {
       }
 
       await conexao.query(
-        "UPDATE caminhao SET idusuario = ?, modelo = ?, placa = ?, ano = ?, ipvaPago = ? WHERE idcaminhao = ?",
+        "UPDATE caminhao SET modelo = ?, placa = ?, ano = ?, ipvaPago = ? WHERE idcaminhao = ?",
         [
           caminhaoAtualizado.modelo,
           caminhaoAtualizado.placa,
@@ -126,4 +126,26 @@ export class CaminhaoDAO {
       return "Não foi possível atualizar o caminhão";
     }
   }
+
+  static async deletarCaminhao(id: number): Promise<string> {
+    let conexao;
+    try {
+      conexao = await getConnection();
+      
+      const [resultado] = await conexao.query(
+        "DELETE FROM caminhao WHERE idcaminhao = ?",
+        [id]
+      );
+  
+      if ((resultado as any).affectedRows === 0) {
+        return `Nenhum caminhão encontrado com o ID ${id}`;
+      }
+  
+      return "Caminhão deletado com sucesso";
+    } catch (erro) {
+      console.log(erro);
+      return "Não foi possível deletar o caminhão";
+    }
+  }
+  
 }

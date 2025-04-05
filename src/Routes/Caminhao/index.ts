@@ -1,34 +1,35 @@
 import express, { Router } from "express"; 
-import { 
-  atualizaCaminhao, 
-  getAllCaminhoes, 
-  getCaminhaoPorId, 
-  gravaNovoCaminhao 
-} from "../../Controllers/Caminhao";
+import {  atualizaCaminhao, getAllCaminhoes, getCaminhaoPorId, gravaNovoCaminhao, deletarCaminhao } from "../../Controllers/Caminhao";
 
 const router: Router = express.Router(); 
 
-// Rota para buscar todos os caminhões
+// Buscar todos os caminhões
 router.get("/", async (req, res) => { 
   res.json(await getAllCaminhoes());
 });
 
-// Rota para buscar caminhão por ID
+// Buscar caminhão por ID
 router.get("/:id", async (req, res) => { 
   const caminhaoId = Number(req.params.id);
   res.json(await getCaminhaoPorId(caminhaoId)); 
 }); 
 
-// Rota para cadastrar novo caminhão
+// Cadastrar novo caminhão
 router.post("/novo", async (req, res) => { 
   const caminhaoCorpo = req.body;
   res.json(await gravaNovoCaminhao(caminhaoCorpo)); 
 });    
 
-// Rota para atualizar caminhão existente
-router.post("/atualizar", async (req, res) => { 
+// Atualizar caminhão existente
+router.put("/atualizar", async (req, res) => { 
   const caminhaoCorpo = req.body;
   res.json(await atualizaCaminhao(caminhaoCorpo));
 }); 
+
+// Deletar caminhão por ID
+router.delete("/:id", async (req, res) => {
+  const caminhaoId = Number(req.params.id);
+  res.json(await deletarCaminhao(caminhaoId));
+});
 
 export default router;

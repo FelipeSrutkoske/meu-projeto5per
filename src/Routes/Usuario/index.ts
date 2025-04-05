@@ -1,25 +1,46 @@
 import express, { Router } from "express"; 
-import { atualizaUsuario, getAllUsuarios, getUsuarioPorId, gravaNovoUsuario } from "../../Controllers/Usuario"
+import { atualizaUsuario, getAllUsuarios, getUsuarioPorId, gravaNovoUsuario, removerUsuario, loginUsuario } from "../../Controllers/Usuario";
 
 const router: Router = express.Router(); 
 
+
+// Consultar todos usuários
 router.get("/", async(req, res) => { 
     res.json(await getAllUsuarios()); 
 });
 
+
+// Consultar usuário por ID
 router.get("/:id", async (req, res) => { 
     const id = Number(req.params.id);
     res.json(await getUsuarioPorId(id)) 
 }); 
 
+
+// Criar novo usuário
 router.post('/novoUsuario', async (req, res) => { 
     const usuarioCorpo = req.body 
     res.json(await gravaNovoUsuario(usuarioCorpo)) 
 });    
 
-router.post('/atualizaUsuario', async (req, res) => { 
+
+// Atualizar usuário por ID
+router.put('/atualizaUsuario', async (req, res) => { 
     const usuarioCorpo = req.body 
     res.json(await atualizaUsuario(usuarioCorpo))
 }) 
+
+// Remover usuário por ID
+router.delete("/:id", async (req, res) => {
+    const id = Number(req.params.id);
+    res.json(await removerUsuario(id));
+  });
+  
+  // Login de usuário
+  router.post("/login", async (req, res) => {
+    const { email, senha } = req.body;
+    const resultado = await loginUsuario(email, senha);
+    res.json(resultado);
+  });
 
 export default router;

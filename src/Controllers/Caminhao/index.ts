@@ -26,3 +26,7 @@ export function atualizaCaminhao(caminhaoCorpo: CaminhaoCorpo & { idcaminhao: nu
   const caminhao = new CaminhaoDTO(caminhaoCorpo.idcaminhao, caminhaoCorpo.modelo, caminhaoCorpo.placa, caminhaoCorpo.ano, caminhaoCorpo.ipvaPago);
   return CaminhaoDAO.atualizarCaminhao(caminhao);
 }
+
+export function deletarCaminhao(id: number): Promise<string> {
+  return CaminhaoDAO.deletarCaminhao(id);
+}
