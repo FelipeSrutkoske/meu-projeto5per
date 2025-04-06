@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+.env
+dist/
+build/
+*.log
+
+# Vite/React
+frontend/node_modules/
+frontend/dist/
+
+# IDEs
+.vscode/
+*.code-workspace
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+
+# Outros
+*.local
+*.sqlite
