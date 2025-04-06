@@ -1,8 +1,10 @@
-import express, { Router } from "express"; 
+//import express, { Router } from "express"; 
 import { atualizaUsuario, getAllUsuarios, getUsuarioPorId, gravaNovoUsuario, removerUsuario, loginUsuario, getUsuariosPaginados } from "../../Controllers/Usuario";
+import { autenticarToken } from "../../middlewares/autenticacao";
+import express, { Router, Request, Response } from "express";
+
 
 const router: Router = express.Router(); 
-
 
 // Consultar todos usuários
 router.get("/", async(req, res) => { 
@@ -36,11 +38,47 @@ router.post('/novoUsuario', async (req, res) => {
 });    
 
 
-// Atualizar usuário por ID
-router.put('/atualizaUsuario', async (req, res) => { 
-    const usuarioCorpo = req.body 
-    res.json(await atualizaUsuario(usuarioCorpo))
-}) 
+// Atualizar usuário com autenticação e verificação de permissão (Nao Funciona)
+router.put('/atualizaUsuario', autenticarToken, async (req: Request, res: Response): Promise<void> => {
+  try {
+    const usuarioId = req.usuario?.id;
+
+    if (!usuarioId) {
+      res.status(401).json("Usuário não autenticado");
+      return;
+    }
+
+    const usuarioCorpo = req.body;
+    usuarioCorpo.idusuario = usuarioId;
+
+    const resultado = await atualizaUsuario(usuarioCorpo);
+    res.json(resultado);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json("Erro ao atualizar usuário");
+  }
+});
+
+// Atualiza usuario com ID (Sem Auth)
+router.put('/atualizaUsuarioSemLogin', async (req: Request, res: Response): Promise<void> => {
+  try {
+    const usuarioId = req.body.idusuario;
+
+    if (!usuarioId) {
+      res.status(400).json("ID do usuário não fornecido");
+      return;
+    }
+
+    const usuarioCorpo = req.body;
+    usuarioCorpo.idusuario = usuarioId;
+
+    const resultado = await atualizaUsuario(usuarioCorpo);
+    res.json(resultado);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json("Erro ao atualizar usuário");
+  }
+});  
 
 // Remover usuário por ID
 router.delete("/:id", async (req, res) => {
