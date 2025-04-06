@@ -144,6 +144,33 @@ export class UsuarioDAO {
       throw new Error("Falha ao buscar o usuário pelo e-mail");
     }
   }
+
+  static async getUsuariosPaginados(limit: number, offset: number): Promise<UsuarioDTO[]> {
+    let connection;
+    try {
+      connection = await getConnection();
+      const [rows] = await connection.query<UsuarioRow[]>(
+        "SELECT * FROM usuario LIMIT ? OFFSET ?",
+        [limit, offset]
+      );
+  
+      return rows.map(row => new UsuarioDTO(
+        row.idusuario,
+        row.nome,
+        row.sobrenome,
+        row.email,
+        row.senha,
+        row.cpf
+      ));
+    } catch (error) {
+      console.log(error);
+      throw new Error("Falha ao buscar os usuários com paginação");
+    } finally {
+      if (connection) await connection.end(); 
+    }
+  }
+  
+  
 }
 
 

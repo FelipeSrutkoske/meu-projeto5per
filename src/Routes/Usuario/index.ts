@@ -1,5 +1,5 @@
 import express, { Router } from "express"; 
-import { atualizaUsuario, getAllUsuarios, getUsuarioPorId, gravaNovoUsuario, removerUsuario, loginUsuario } from "../../Controllers/Usuario";
+import { atualizaUsuario, getAllUsuarios, getUsuarioPorId, gravaNovoUsuario, removerUsuario, loginUsuario, getUsuariosPaginados } from "../../Controllers/Usuario";
 
 const router: Router = express.Router(); 
 
@@ -8,6 +8,18 @@ const router: Router = express.Router();
 router.get("/", async(req, res) => { 
     res.json(await getAllUsuarios()); 
 });
+
+router.get("/paginado", async (req, res) => {
+    const limit = parseInt(req.query.limit as string) || 10;
+    const offset = parseInt(req.query.offset as string) || 0;
+  
+    try {
+      const usuarios = await getUsuariosPaginados(limit, offset);
+      res.json(usuarios);
+    } catch (error) {
+      res.status(500).json({ erro: "Erro ao buscar usuários com paginação" });
+    }
+  });
 
 
 // Consultar usuário por ID

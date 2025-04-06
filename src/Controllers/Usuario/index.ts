@@ -102,5 +102,12 @@ function validarCPF(cpf: string): boolean {
 }
 
 function validarSenha(senha: string): boolean {
-  return senha.length >= 6;
+  const regexSenhaForte = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!%*?#&]{8,}$/;
+  return regexSenhaForte.test(senha);
 }
+
+export function getUsuariosPaginados(limit: number, offset: number): Promise<UsuarioDTO[]> {
+  return UsuarioDAO.getUsuariosPaginados(limit, offset);
+}
+
+
