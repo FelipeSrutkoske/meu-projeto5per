@@ -1,0 +1,1 @@
+{"root":["./src/app.ts","./src/controllers/usuario/index.ts","./src/dao/usuario/index.ts","./src/dto/usuario/index.ts","./src/routes/usuario/index.ts","./src/database/index.ts","./src/database/testconnection.ts"],"errors":true,"version":"5.8.2"}
