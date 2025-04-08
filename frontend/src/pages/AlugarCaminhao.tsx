@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { calcularPrecoPorDia } from "../utils/caminhaoUtils";
+import styles from '../styles/AlugarCaminhao.module.css';
 
 interface Caminhao {
   modelo: string;
@@ -99,24 +100,40 @@ const AlugarCaminhao = () => {
   };
 
   return (
-    <div>
-      <h2>Alugar Caminhão</h2>
-      {mensagem && <p>{mensagem}</p>}
+    <div className={styles.container}>
+      <h2 className={styles.title}>Alugar Caminhão</h2>
+      {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
 
       {caminhaoInfo && (
-        <div style={{ border: "1px solid #ccc", padding: "10px", marginBottom: "20px" }}>
+        <div className={styles.caminhaoInfo}>
           <h3>{caminhaoInfo.modelo}</h3>
           <p>Ano: {caminhaoInfo.ano}</p>
           <p>Preço por Dia: R$ {caminhaoInfo.precoPorDia?.toFixed(2)}</p>
         </div>
       )}
 
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="idusuario" placeholder="ID do Usuário" onChange={handleChange} required />
-        <input type="text" name="idcaminhao" value={formData.idcaminhao} readOnly />
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <input
+          type="text"
+          name="idusuario"
+          placeholder="ID do Usuário"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="idcaminhao"
+          value={formData.idcaminhao}
+          readOnly
+        />
         <input type="date" name="dataInicio" onChange={handleChange} required />
         <input type="date" name="dataFim" onChange={handleChange} required />
-        <input type="text" name="valorTotal" value={formData.valorTotal} readOnly />
+        <input
+          type="text"
+          name="valorTotal"
+          value={formData.valorTotal}
+          readOnly
+        />
         <button type="submit">Alugar</button>
       </form>
     </div>

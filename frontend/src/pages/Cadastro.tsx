@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cadastro = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +13,6 @@ const Cadastro = () => {
     confirmarSenha: ""
   });
 
-  const [mensagem, setMensagem] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +23,7 @@ const Cadastro = () => {
     e.preventDefault();
 
     if (formData.senha !== formData.confirmarSenha) {
-      setMensagem("As senhas não coincidem.");
+      toast.error("As senhas não coincidem.");
       return;
     }
 
@@ -39,41 +40,84 @@ const Cadastro = () => {
         }),
       });
 
-      if (response.ok) {
-        setMensagem("Cadastro realizado com sucesso!");
+      const resultado = await response.text();
 
-        setTimeout(() => {
-          setMensagem("");
-          navigate("/login");
-        }, 2000); // espera 2 segundos antes de redirecionar
-      } else {
-        const erro = await response.json();
-        setMensagem(erro.erro || "Erro ao cadastrar.");
+      if (!response.ok) {
+        // Trata mensagens específicas do backend
+        if (resultado.includes("email")) {
+          toast.error("Este email já está cadastrado.");
+        } else if (resultado.includes("cpf")) {
+          toast.error("Este CPF já está cadastrado.");
+        } else {
+          toast.error(resultado || "Erro ao cadastrar.");
+        }
+        return;
       }
-    } catch (error) {
+
+      toast.success("Cadastro realizado com sucesso!");
+      setTimeout(() => navigate("/login"), 1500);
+    } catch (error: any) {
       console.error(error);
-      setMensagem("Erro ao conectar com o servidor.");
+      toast.error(error.message || "Erro ao conectar com o servidor.");
     }
   };
 
   return (
-    <div>
+    <div style={{ maxWidth: "400px", margin: "0 auto", padding: "20px" }}>
       <h2>Cadastro</h2>
-      {mensagem && <p>{mensagem}</p>}
 
       <form onSubmit={handleSubmit}>
-        <input type="text" name="nome" placeholder="Nome" onChange={handleChange} required />
-        <input type="text" name="sobrenome" placeholder="Sobrenome" onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-        <input type="text" name="cpf" placeholder="CPF" onChange={handleChange} required />
-        <input type="password" name="senha" placeholder="Senha" onChange={handleChange} required />
-        <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" onChange={handleChange} required />
+        <input
+          type="text"
+          name="nome"
+          placeholder="Nome"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="sobrenome"
+          placeholder="Sobrenome"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="cpf"
+          placeholder="CPF"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="senha"
+          placeholder="Senha"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="confirmarSenha"
+          placeholder="Confirmar Senha"
+          onChange={handleChange}
+          required
+        />
 
         <button type="submit">Cadastrar</button>
       </form>
+
+      <ToastContainer position="top-center" />
     </div>
   );
 };
 
 export default Cadastro;
+
 

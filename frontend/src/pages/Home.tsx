@@ -1,5 +1,6 @@
-//import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FaTruckMoving } from "react-icons/fa";
+import styles from "../styles/Home.module.css";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -8,19 +9,42 @@ const Home = () => {
     navigate("/catalogoCaminhao");
   };
 
-  return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
-      <h1>Empreendize Truck Aluguel</h1>
-      <p>
-        Bem-vindo ao nosso sistema de aluguel de caminhões!  
-        Aqui você pode encontrar veículos prontos para atender às suas necessidades de transporte com segurança, agilidade e preço justo.
-      </p>
+  const irParaLogin = () => {
+    navigate("/login");
+  };
 
-      <button onClick={irParaCatalogo} style={{ marginTop: "20px", padding: "10px 20px" }}>
-        Ver Caminhões Disponíveis
-      </button>
+  const irParaCadastro = () => {
+    navigate("/cadastro");
+  };
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <h1 className={styles.title}>
+          <FaTruckMoving className={styles.icon} />
+          Empreendize Truck Aluguel
+        </h1>
+        <p className={styles.description}>
+          Bem-vindo ao nosso sistema de aluguel de caminhões!
+          Aqui você pode encontrar veículos prontos para atender às suas necessidades de transporte com segurança, agilidade e preço justo.
+        </p>
+        <div className={styles.buttons}>
+          <button className={styles.button} onClick={irParaCatalogo}>
+            Ver Caminhões Disponíveis
+          </button>
+          <button className={styles.buttonSecondary} onClick={irParaLogin}>
+            Login
+          </button>
+          <button className={styles.buttonSecondary} onClick={irParaCadastro}>
+            Cadastro
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Home;
+
+
+

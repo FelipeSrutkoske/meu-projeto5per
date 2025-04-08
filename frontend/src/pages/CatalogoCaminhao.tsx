@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "../styles/CatalogoCaminhao.module.css";
+import { FiTruck } from "react-icons/fi";
+
 
 interface Caminhao {
   idcaminhao: number;
@@ -39,30 +42,22 @@ const CatalogoCaminhao = () => {
   };
 
   return (
-    <div>
-      <h2>Catálogo de Caminhões</h2>
-      {mensagem && <p>{mensagem}</p>}
+    <div className={styles.pageContainer}>
+      <h2 className={styles.title}>Catálogo de Caminhões</h2>
+      {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+      <div className={styles.grid}>
         {caminhoes.map((caminhao) => (
-          <div
-            key={caminhao.idcaminhao}
-            style={{
-              border: "1px solid #ccc",
-              padding: "10px",
-              width: "200px",
-            }}
-          >
-            {/* Imagem virá depois */}
+          <div key={caminhao.idcaminhao} className={styles.card}>
+            <FiTruck size={40} style={{ color: "#555", marginBottom: "10px" }} />
             <h3>{caminhao.modelo}</h3>
             <p>Placa: {caminhao.placa}</p>
             <p>Ano: {caminhao.ano}</p>
             <p>IPVA Pago: {caminhao.ipvaPago ? "Sim" : "Não"}</p>
             <p>Preço por Km: R$ {caminhao.precoPorKm ?? "?"}</p>
             <button
-              onClick={() =>
-                navigate(`/alugarCaminhao/${caminhao.idcaminhao}`)
-              }
+              className={styles.button}
+              onClick={() => navigate(`/alugarCaminhao/${caminhao.idcaminhao}`)}
             >
               Alugar
             </button>
@@ -70,7 +65,7 @@ const CatalogoCaminhao = () => {
         ))}
       </div>
 
-      <button onClick={voltarParaHome} style={{ marginTop: "20px" }}>
+      <button onClick={voltarParaHome} className={styles.voltar}>
         Voltar para Home
       </button>
     </div>
@@ -78,4 +73,6 @@ const CatalogoCaminhao = () => {
 };
 
 export default CatalogoCaminhao;
+
+
 

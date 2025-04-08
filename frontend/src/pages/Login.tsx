@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styles from "../styles/Login.module.css";
 import api from "../services/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [erro, setErro] = useState("");
+  const [carregando, setCarregando] = useState(false);
   const navigate = useNavigate();
 
   const validarEmail = (email: string) => {
@@ -17,37 +21,66 @@ const Login = () => {
     e.preventDefault();
 
     if (!validarEmail(email)) {
-      setErro("E-mail inválido.");
+      toast.error("E-mail inválido.");
       return;
     }
+
+    setCarregando(true);
 
     try {
       const resposta = await api.post("/usuarios/login", { email, senha });
       localStorage.setItem("token", resposta.data.token);
-      navigate("/home"); // redireciona pra área logada
+      toast.success("Login realizado com sucesso!");
+      setTimeout(() => navigate("/home"), 1500);
     } catch (err: any) {
-      setErro(err.response?.data?.erro || "Erro ao fazer login");
+      toast.error(err.response?.data?.erro || "Erro ao fazer login");
+    } finally {
+      setCarregando(false);
     }
   };
 
+  const voltarParaHome = () => {
+    navigate("/home");
+  };
+
   return (
-    <div style={{ padding: "2rem" }}>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email:</label>
-          <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
-        </div>
-        <div>
-          <label>Senha:</label>
-          <input type="password" value={senha} onChange={e => setSenha(e.target.value)} />
-        </div>
-        {erro && <p style={{ color: "red" }}>{erro}</p>}
-        <button type="submit">Entrar</button>
-      </form>
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <FaUserCircle className={styles.icon} />
+        <h2 className={styles.title}>Login</h2>
+
+        <form onSubmit={handleLogin} className={styles.form}>
+          <input
+            className={styles.input}
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className={styles.input}
+            type="password"
+            placeholder="Senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+          />
+
+          <button type="submit" className={styles.button} disabled={carregando}>
+            {carregando ? "Entrando..." : "Entrar"}
+          </button>
+        </form>
+
+        <button onClick={voltarParaHome} className={styles.secondaryButton}>
+          Voltar para Home
+        </button>
+      </div>
+
+      <ToastContainer position="top-center" />
     </div>
   );
 };
 
 export default Login;
+
+
 
