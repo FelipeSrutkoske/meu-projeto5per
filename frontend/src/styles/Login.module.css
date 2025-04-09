@@ -1,12 +1,11 @@
-/* .container {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
   padding: 20px;
   box-sizing: border-box;
-} */
+}
 
 .card {
   background-color: white;
@@ -79,4 +78,16 @@
   color: red;
   font-size: 0.9rem;
   margin-top: -10px;
+}
+
+.background {
+  background-image: url(../assets/images/loginBackground.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }

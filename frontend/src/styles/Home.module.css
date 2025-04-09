@@ -5,6 +5,18 @@
   overflow-x: hidden;
 }
 
+.background {
+  background-image: url(../assets/images/homeBackground2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 .card {
   background-color: white;
   color: #333;

@@ -44,38 +44,40 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.card}>
-        <FaUserCircle className={styles.icon} />
-        <h2 className={styles.title}>Login</h2>
+    <div className={styles.background}>
+      <div className={styles.container}>
+        <div className={styles.card}>
+          <FaUserCircle className={styles.icon} />
+          <h2 className={styles.title}>Login</h2>
 
-        <form onSubmit={handleLogin} className={styles.form}>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            className={styles.input}
-            type="password"
-            placeholder="Senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-          />
+          <form onSubmit={handleLogin} className={styles.form}>
+            <input
+              className={styles.input}
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              className={styles.input}
+              type="password"
+              placeholder="Senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+            />
 
-          <button type="submit" className={styles.button} disabled={carregando}>
-            {carregando ? "Entrando..." : "Entrar"}
+            <button type="submit" className={styles.button} disabled={carregando}>
+              {carregando ? "Entrando..." : "Entrar"}
+            </button>
+          </form>
+
+          <button onClick={voltarParaHome} className={styles.secondaryButton}>
+            Voltar para Home
           </button>
-        </form>
+        </div>
 
-        <button onClick={voltarParaHome} className={styles.secondaryButton}>
-          Voltar para Home
-        </button>
+        <ToastContainer position="top-center" />
       </div>
-
-      <ToastContainer position="top-center" />
     </div>
   );
 };

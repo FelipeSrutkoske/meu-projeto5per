@@ -1,65 +1,103 @@
 .pageContainer {
-    padding: 10% 20px 40px;
-    text-align: center;
-    color: #213547;
-    overflow-x: hidden;
-  }
-  
-  .titulo {
-    margin-bottom: 20px;
-    font-size: 2rem;
-  }
-  
-  .card {
-    background-color: white;
-    color: #333;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 24px;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  input {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-  }
-  
-  .btn {
-    margin-top: 10px;
-    padding: 10px 16px;
-    background-color: #0077ff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn:hover {
-    background-color: #005ed1;
-  }
-  
-  .voltarBtn {
-    margin-top: 30px;
-    padding: 10px 20px;
-    background-color: #0077ff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-  }
-  
-  .voltarBtn:hover {
-    background-color: transparent;
-    color: #0077ff;
-    border: 2px solid #0077ff;
-  }
+  padding: 40px 20px;
+  text-align: center;
+  color: #213547;
+  overflow-x: hidden;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.background {
+  background-image: url(../assets/images/cadastroBackground2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleBox {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 5px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-bottom: 15px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+}
+
+.titulo {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.card {
+  background-color: white;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.btn {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background-color: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #005ed1;
+}
+
+.voltarBtn {
+  margin-top: 30px;
+  padding: 10px 20px;
+  border: 2px solid #007bff;
+  background-color: white;
+  color: #0077ff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.voltarBtn:hover {
+  background-color: #0077ff;
+  color: #0077ff;
+  border: 2px solid #0077ff;
+}
