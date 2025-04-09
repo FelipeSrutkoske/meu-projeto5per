@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/CatalogoCaminhao.module.css";
 import { FiTruck } from "react-icons/fi";
+import { calcularPrecoPorDia } from "../utils/caminhaoUtils";
+
 
 
 interface Caminhao {
@@ -42,32 +44,34 @@ const CatalogoCaminhao = () => {
   };
 
   return (
-    <div className={styles.pageContainer}>
-      <h2 className={styles.title}>Catálogo de Caminhões</h2>
-      {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
+    <div className={styles.background}>
+      <div className={styles.pageContainer}>
+        <h2 className={styles.title}>Catálogo de Caminhões</h2>
+        {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
 
-      <div className={styles.grid}>
-        {caminhoes.map((caminhao) => (
-          <div key={caminhao.idcaminhao} className={styles.card}>
-            <FiTruck size={40} style={{ color: "#555", marginBottom: "10px" }} />
-            <h3>{caminhao.modelo}</h3>
-            <p>Placa: {caminhao.placa}</p>
-            <p>Ano: {caminhao.ano}</p>
-            <p>IPVA Pago: {caminhao.ipvaPago ? "Sim" : "Não"}</p>
-            <p>Preço por Km: R$ {caminhao.precoPorKm ?? "?"}</p>
-            <button
-              className={styles.button}
-              onClick={() => navigate(`/alugarCaminhao/${caminhao.idcaminhao}`)}
-            >
-              Alugar
-            </button>
-          </div>
-        ))}
+        <div className={styles.grid}>
+          {caminhoes.map((caminhao) => (
+            <div key={caminhao.idcaminhao} className={styles.card}>
+              <FiTruck size={40} style={{ color: "#555", marginBottom: "10px" }} />
+              <h3>{caminhao.modelo}</h3>
+              <p>Placa: {caminhao.placa}</p>
+              <p>Ano: {caminhao.ano}</p>
+              <p>IPVA Pago: {caminhao.ipvaPago ? "Sim" : "Não"}</p>
+              <p>Preço por dia: R$ {calcularPrecoPorDia(caminhao.ano)}</p>
+              <button
+                className={styles.button}
+                onClick={() => navigate(`/alugarCaminhao/${caminhao.idcaminhao}`)}
+              >
+                Alugar
+              </button>
+            </div>
+          ))}
+        </div>
+
+        <button onClick={voltarParaHome} className={styles.voltar}>
+          Voltar para Home
+        </button>
       </div>
-
-      <button onClick={voltarParaHome} className={styles.voltar}>
-        Voltar para Home
-      </button>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import styles from "../styles/Cadastro.module.css";
 
 const Cadastro = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ const Cadastro = () => {
     email: "",
     cpf: "",
     senha: "",
-    confirmarSenha: ""
+    confirmarSenha: "",
   });
 
   const navigate = useNavigate();
@@ -43,7 +44,6 @@ const Cadastro = () => {
       const resultado = await response.text();
 
       if (!response.ok) {
-        // Trata mensagens específicas do backend
         if (resultado.includes("email")) {
           toast.error("Este email já está cadastrado.");
         } else if (resultado.includes("cpf")) {
@@ -63,10 +63,9 @@ const Cadastro = () => {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "0 auto", padding: "20px" }}>
-      <h2>Cadastro</h2>
-
-      <form onSubmit={handleSubmit}>
+    <div className={styles.pageContainer}>
+      <h2 className={styles.titulo}>Cadastro de Usuário</h2>
+      <form onSubmit={handleSubmit} className={styles.card}>
         <input
           type="text"
           name="nome"
@@ -109,9 +108,14 @@ const Cadastro = () => {
           onChange={handleChange}
           required
         />
-
-        <button type="submit">Cadastrar</button>
+        <button type="submit" className={styles.btn}>
+          Cadastrar
+        </button>
       </form>
+
+      <button onClick={() => navigate("/login")} className={styles.voltarBtn}>
+        Voltar
+      </button>
 
       <ToastContainer position="top-center" />
     </div>

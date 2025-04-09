@@ -34,12 +34,12 @@ html, body {
 }
 
 body {
-  height: 100%;
+  padding-block: 10px;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #e0eafc, #cfdef3); /* ou sua imagem */
+  background: linear-gradient(135deg, #e0eafc, #cfdef3); /*ou sua imagem*/
 }
 
 
@@ -49,7 +49,7 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+/* button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -59,7 +59,7 @@ button {
   background-color: #ef6c07;
   cursor: pointer;
   transition: border-color 0.25s;
-}
+} */
 button:hover {
   border-color: #646cff;
 }

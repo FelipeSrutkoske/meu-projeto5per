@@ -1,0 +1,65 @@
+.pageContainer {
+    padding: 10% 20px 40px;
+    text-align: center;
+    color: #213547;
+    overflow-x: hidden;
+  }
+  
+  .titulo {
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  
+  .card {
+    background-color: white;
+    color: #333;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .btn {
+    margin-top: 10px;
+    padding: 10px 16px;
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #005ed1;
+  }
+  
+  .voltarBtn {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .voltarBtn:hover {
+    background-color: transparent;
+    color: #0077ff;
+    border: 2px solid #0077ff;
+  }
