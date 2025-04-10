@@ -134,7 +134,7 @@ export class UsuarioDAO {
       );
   
       if (rows.length === 0) {
-        throw new Error("Usuário não encontrado");
+          return null;
       }
   
       const usuario = rows[0];
