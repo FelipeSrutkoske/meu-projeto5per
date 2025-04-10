@@ -1,3 +1,6 @@
+// ✅ Tratamento adequado de mensagens de sucesso e erro com toastify
+// ✅ Resposta do servidor lida como JSON, com verificação de erro e mensagem
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -22,12 +25,12 @@ const Cadastro = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     if (formData.senha !== formData.confirmarSenha) {
       toast.error("As senhas não coincidem.");
       return;
     }
-
+  
     try {
       const response = await fetch("http://localhost:3000/usuarios/novoUsuario", {
         method: "POST",
@@ -40,34 +43,33 @@ const Cadastro = () => {
           cpf: formData.cpf,
         }),
       });
-
-      const resultado = await response.text();
-
-      if (!response.ok) {
-        if (resultado.includes("email")) {
-          toast.error("Este email já está cadastrado.");
-        } else if (resultado.includes("cpf")) {
-          toast.error("Este CPF já está cadastrado.");
-        } else {
-          toast.error(resultado || "Erro ao cadastrar.");
-        }
+  
+      const resultado = await response.json();
+  
+      // 🛑 Se veio erro, mostra erro e para tudo
+      if (resultado.erro || !response.ok) {
+        toast.error(resultado.erro || "Erro ao cadastrar.");
         return;
       }
-
-      toast.success("Cadastro realizado com sucesso!");
+  
+      // ✅ Se passou, exibe sucesso
+      console.log("Resultado da API:", resultado);
+      toast.success(resultado.mensagem || "Cadastro realizado com sucesso!");
       setTimeout(() => navigate("/login"), 1500);
+  
     } catch (error: any) {
       console.error(error);
       toast.error(error.message || "Erro ao conectar com o servidor.");
     }
   };
+  
 
   return (
     <div className={styles.background}>
       <div className={styles.pageContainer}>
-      <div className={styles.titleBox}>
-        <h2 className={styles.titulo}>Cadastro de Usuário</h2>
-      </div>
+        <div className={styles.titleBox}>
+          <h2 className={styles.titulo}>Cadastro de Usuário</h2>
+        </div>
         <form onSubmit={handleSubmit} className={styles.card}>
           <input
             type="text"
@@ -75,7 +77,7 @@ const Cadastro = () => {
             placeholder="Nome"
             onChange={handleChange}
             required
-            />
+          />
           <input
             type="text"
             name="sobrenome"
@@ -89,28 +91,28 @@ const Cadastro = () => {
             placeholder="Email"
             onChange={handleChange}
             required
-            />
+          />
           <input
             type="text"
             name="cpf"
             placeholder="CPF"
             onChange={handleChange}
             required
-            />
+          />
           <input
             type="password"
             name="senha"
             placeholder="Senha"
             onChange={handleChange}
             required
-            />
+          />
           <input
             type="password"
             name="confirmarSenha"
             placeholder="Confirmar Senha"
             onChange={handleChange}
             required
-            />
+          />
           <button type="submit" className={styles.btn}>
             Cadastrar
           </button>
@@ -127,5 +129,3 @@ const Cadastro = () => {
 };
 
 export default Cadastro;
-
-

@@ -11,6 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [carregando, setCarregando] = useState(false);
+  const [erroLogin, setErroLogin] = useState(""); // <- Novo estado para exibir o erro
   const navigate = useNavigate();
 
   const validarEmail = (email: string) => {
@@ -23,10 +24,12 @@ const Login = () => {
 
     if (!validarEmail(email)) {
       toast.error("E-mail inválido.");
+      setErroLogin("E-mail inválido."); // <- Define o erro no estado
       return;
     }
 
     setCarregando(true);
+    setErroLogin(""); // <- Limpa qualquer erro anterior antes de tentar login
 
     try {
       const resposta = await api.post("/usuarios/login", { email, senha });
@@ -34,7 +37,9 @@ const Login = () => {
       toast.success("Login realizado com sucesso!");
       setTimeout(() => navigate("/catalogoCaminhao"), 1500);
     } catch (err: any) {
-      toast.error(err.response?.data?.erro || "Erro ao fazer login");
+      const mensagemErro = err.response?.data?.erro || "Erro ao fazer login";
+      toast.error(mensagemErro);
+      setErroLogin(mensagemErro); // <- Mostra o erro também na interface
     } finally {
       setCarregando(false);
     }
@@ -66,6 +71,9 @@ const Login = () => {
             <button type="submit" className={styles.button} disabled={carregando}>
               {carregando ? "Entrando..." : "Entrar"}
             </button>
+
+            {/* Exibe a mensagem de erro na interface caso ocorra */}
+            {erroLogin && <p className={styles.erro}>{erroLogin}</p>}
           </form>
 
           <VoltarParaHome />
@@ -78,6 +86,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-

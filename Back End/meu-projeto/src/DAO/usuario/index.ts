@@ -78,7 +78,7 @@ export class UsuarioDAO {
       return "Usuário cadastrado com sucesso";
     } catch (error) {
       console.log(error);
-      return "Não foi possível cadastrar o usuário";
+      throw new Error("Não foi possível cadastrar o usuário");
     }
   }
 
