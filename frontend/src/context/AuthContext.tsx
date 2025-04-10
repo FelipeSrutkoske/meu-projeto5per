@@ -1,7 +1,6 @@
 import { createContext, useState, useEffect, useContext, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Tipagem do usuário
 interface Usuario {
   id: number;
   email: string;
@@ -23,7 +22,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Tenta carregar o usuário do localStorage, se tiver
     const usuarioSalvo = localStorage.getItem("usuario");
     if (token && usuarioSalvo) {
       setUsuario(JSON.parse(usuarioSalvo));
@@ -35,7 +33,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUsuario(usuario);
     localStorage.setItem("token", novoToken);
     localStorage.setItem("usuario", JSON.stringify(usuario));
-    navigate("/dashboard"); // Redireciona para área logada
+    navigate("/dashboard"); 
   };
 
   const logout = () => {
@@ -53,7 +51,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Hook personalizado para facilitar o uso do contexto
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) throw new Error("useAuth deve ser usado dentro do AuthProvider");

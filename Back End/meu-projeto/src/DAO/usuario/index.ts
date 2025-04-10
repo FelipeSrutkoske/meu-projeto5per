@@ -12,7 +12,6 @@ interface UsuarioRow extends RowDataPacket {
 }
 
 export class UsuarioDAO {
-  // 🟢 Buscar todos os usuários
   static async getAllUsuarios(): Promise<UsuarioDTO[]> {
     let connection;
     try {
@@ -37,7 +36,6 @@ export class UsuarioDAO {
     }
   }
 
-  // 🟢 Buscar usuário por ID
   static async getUsuarioById(id: number): Promise<UsuarioDTO | null> {
     let connection;
     try {
@@ -48,7 +46,7 @@ export class UsuarioDAO {
       );
 
       if (rows.length === 0) {
-        return null; // Retorna null caso não encontre o usuário
+        return null; 
       }
 
       const usuario = rows[0];
@@ -66,7 +64,6 @@ export class UsuarioDAO {
     }
   }
 
-  // 🔵 Gravar novo usuário
   static async gravaNovoUsuario(usuario: UsuarioDTO): Promise<string> {
     let connection;
     try {
@@ -82,7 +79,6 @@ export class UsuarioDAO {
     }
   }
 
-  // 🔴 Atualizar usuário
   static async atualizaUsuario(usuario: UsuarioDTO): Promise<string> {
     let connection;
     try {
@@ -111,7 +107,6 @@ export class UsuarioDAO {
     }
   }
 
-  // 🔴 Remover usuário
   static async removerUsuario(id: number): Promise<string> {
     let connection;
     try {

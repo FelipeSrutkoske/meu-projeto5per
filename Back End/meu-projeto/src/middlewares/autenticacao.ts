@@ -9,7 +9,7 @@ export const autenticarToken = (
   const authHeader = req.headers["authorization"];
   const token = authHeader?.split(" ")[1];
 
-  console.log("🟡 Token recebido:", token); // 🔍 Loga o token recebido
+  console.log("🟡 Token recebido:", token);
 
   if (!token) {
     console.warn("⛔ Token não fornecido");
@@ -19,11 +19,11 @@ export const autenticarToken = (
 
   jwt.verify(token, process.env.JWT_SECRET as string, (err, decoded) => {
     if (err) {
-      console.error("❌ Erro na verificação do token:", err); // Erro detalhado
+      console.error("❌ Erro na verificação do token:", err); 
     }
 
     if (!decoded || typeof decoded !== "object") {
-      console.warn("⚠️ Token inválido ou malformado:", decoded); // Mostra o que foi decodificado
+      console.warn("⚠️ Token inválido ou malformado:", decoded); 
       res.status(403).json({ erro: "Token inválido" });
       return;
     }

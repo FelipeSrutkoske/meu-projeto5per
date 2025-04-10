@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* <- isso aqui! */
+  align-items: flex-start; 
   background-color: #fef7ec;
   padding: 40px 20px;
   box-sizing: border-box;
@@ -25,14 +25,13 @@
 
 .container {
   width: 100%;
-  max-width: 480px; /* antes era 600px */
+  max-width: 480px; 
   background-color: rgba(255, 250, 230, 0.95);
   border-radius: 20px;
   padding: 24px;
   padding-bottom: 24px;
-  /* aumentei um pouco para compensar o tamanho menor */
   margin: 20px auto;
-  box-shadow: 6px 6px 0px #ffcc00; /* suavizado o efeito */
+  box-shadow: 6px 6px 0px #ffcc00; 
   border: 3px solid #ffcc00;
   z-index: 2;
   position: relative;
@@ -120,7 +119,7 @@ input[readonly] {
   margin-left: 15px;
   margin-top: 20px;
   padding: 12px 24px;
-  background: linear-gradient(135deg, #ffff22, #ff0798); /* laranja queimado para amarelo vivo */
+  background: linear-gradient(135deg, #ffff22, #ff0798); 
   color: white;
   border: none;
   border-radius: 12px;
@@ -128,7 +127,7 @@ input[readonly] {
   font-size: 1.1rem;
   font-weight: bold;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 18px rgba(255, 87, 34, 0.4); /* sombra na cor laranja */
+  box-shadow: 0 6px 18px rgba(255, 87, 34, 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -151,7 +150,7 @@ input[readonly] {
 
 .voltarBtn:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 24px rgba(255, 87, 34, 0.6); /* sombra mais forte ao hover */
+  box-shadow: 0 10px 24px rgba(255, 87, 34, 0.6); 
 }
 
 

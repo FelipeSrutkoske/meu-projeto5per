@@ -120,7 +120,7 @@ const Cadastro = () => {
           </button>
         </form>
 
-        <button onClick={() => navigate("/login")} className={styles.voltarBtn}>
+        <button onClick={() => navigate("/")} className={styles.voltarBtn}>
           Voltar
         </button>
 

@@ -12,7 +12,6 @@ import { autenticarToken } from "../../middlewares/autenticacao";
 
 const router: Router = express.Router();
 
-// 🟢 Consultar todos os usuários
 router.get("/", async (req, res) => {
   try {
     const usuarios = await getAllUsuarios();
@@ -23,7 +22,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// 🟢 Consultar usuários com paginação
 router.get("/paginado", async (req, res) => {
   const limit = parseInt(req.query.limit as string) || 10;
   const offset = parseInt(req.query.offset as string) || 0;
@@ -37,7 +35,23 @@ router.get("/paginado", async (req, res) => {
   }
 });
 
-// 🟢 Consultar usuário por ID
+router.get("/perfil", autenticarToken, async (req, res) => {
+  try {
+    const id = (req as any).usuario.id;
+    const usuario = await getUsuarioPorId(id); 
+
+    if (!usuario) {
+      res.status(404).json({ erro: "Usuário não encontrado" });
+      return;
+    }
+
+    res.json(usuario);
+  } catch (error) {
+    console.error("Erro ao buscar perfil do usuário:", error);
+    res.status(500).json({ erro: "Erro ao buscar perfil do usuário" });
+  }
+});
+
 router.get("/:id", async (req, res) => {
   try {
     const id = Number(req.params.id);
@@ -55,7 +69,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// 🔵 Criar novo usuário
 router.post("/novoUsuario", async (req, res) => {
   try {
     const usuarioCorpo = req.body;
@@ -73,7 +86,6 @@ router.post("/novoUsuario", async (req, res) => {
   }
 });
 
-// 🟠 Atualizar usuário autenticado
 router.put("/atualizaUsuario", autenticarToken, async (req: Request, res: Response): Promise<void> => {
   try {
     const usuarioId = req.usuario?.id;
@@ -94,7 +106,6 @@ router.put("/atualizaUsuario", autenticarToken, async (req: Request, res: Respon
   }
 });
 
-// 🟠 Atualizar usuário por ID (sem autenticação)
 router.put("/atualizaUsuarioSemLogin", async (req: Request, res: Response): Promise<void> => {
   try {
     const usuarioId = req.body.idusuario;
@@ -115,7 +126,6 @@ router.put("/atualizaUsuarioSemLogin", async (req: Request, res: Response): Prom
   }
 });
 
-// 🔴 Remover usuário
 router.delete("/:id", async (req, res) => {
   try {
     const id = Number(req.params.id);
@@ -127,7 +137,6 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// 🔑 Login do usuário
 router.post("/login", async (req, res) => {
   try {
     const { email, senha } = req.body;
@@ -136,7 +145,7 @@ router.post("/login", async (req, res) => {
     if (typeof resultado === "string") {
       res.status(400).json({ erro: resultado });
     } else {
-      res.json(resultado); // { token }
+      res.json(resultado); 
     }
   } catch (error) {
     console.error(error);

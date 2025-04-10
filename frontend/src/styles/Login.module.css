@@ -20,12 +20,12 @@
 }
 
 .card {
-  background-color: #fff9e6; /* amarelinho pastel cartoon */
+  background-color: #fff9e6; 
   color: #2b2b2b;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 6px 6px 0px #ff9900; /* sombra cartoon viva */
-  border: 3px solid #ffcc00; /* borda cartoon desenhada */
+  box-shadow: 6px 6px 0px #ff9900;
+  border: 3px solid #ffcc00; 
   max-width: 400px;
   width: 100%;
   text-align: center;

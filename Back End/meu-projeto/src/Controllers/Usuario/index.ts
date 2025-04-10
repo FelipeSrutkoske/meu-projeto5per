@@ -38,13 +38,11 @@ export async function gravaNovoUsuario(usuarioCorpo: UsuarioCorpo): Promise<stri
   return UsuarioDAO.gravaNovoUsuario(usuario);
 }
 
-// 🟠 Atualizar usuário (não permite mudar email)
 export async function atualizaUsuario(usuarioCorpo: UsuarioCorpo): Promise<string> {
   const usuarioExistente = await UsuarioDAO.getUsuarioById(usuarioCorpo.idusuario!);
 
   if (!usuarioExistente) return "Usuário não encontrado";
 
-  // Garantir que o email não seja alterado
   usuarioCorpo.email = usuarioExistente.email;
 
   const idusuario = usuarioCorpo.idusuario ?? null;  // Se idusuario for undefined, atribui null
@@ -53,28 +51,23 @@ export async function atualizaUsuario(usuarioCorpo: UsuarioCorpo): Promise<strin
   return UsuarioDAO.atualizaUsuario(usuario);
 }
 
-// 🔴 Excluir usuário
 export function removerUsuario(id: number): Promise<string> {
   return UsuarioDAO.removerUsuario(id);
 }
 
-// 🔑 Login de usuário
 export async function loginUsuario(email: string, senha: string): Promise<string | { token: string }> {
     try {
-      // Buscar o usuário pelo e-mail
       const usuario = await UsuarioDAO.getUsuarioByEmail(email);
       
       if (!usuario) {
         return "Usuário não encontrado";
       }
-  
-      // Comparar a senha fornecida com a senha criptografada no banco
+
       const senhaValida = await bcrypt.compare(senha, usuario.senha);
       if (!senhaValida) {
         return "Senha inválida";
       }
   
-      // Gerar o token JWT
       const token = jwt.sign(
         { id: usuario.idusuario, email: usuario.email },
         process.env.JWT_SECRET as string,
@@ -89,8 +82,6 @@ export async function loginUsuario(email: string, senha: string): Promise<string
     }
   }
   
-
-// 📌 Funções auxiliares para validações
 function validarEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }

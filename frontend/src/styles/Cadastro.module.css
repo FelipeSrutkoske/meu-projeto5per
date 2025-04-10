@@ -13,7 +13,7 @@
 }
 
 .background {
-  background-image: url(../assets/images/homeBackground2.png); /* atualize se necessário */
+  background-image: url(../assets/images/homeBackground2.png); 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -101,7 +101,7 @@ input:focus {
 .voltarBtn {
   margin-top: 30px;
   padding: 12px 24px;
-  background: linear-gradient(135deg, #ffff22, #ff0798); /* laranja queimado para amarelo vivo */
+  background: linear-gradient(135deg, #ffff22, #ff0798); 
   color: white;
   border: none;
   border-radius: 12px;
@@ -109,7 +109,7 @@ input:focus {
   font-size: 1.1rem;
   font-weight: bold;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 18px rgba(255, 87, 34, 0.4); /* sombra na cor laranja */
+  box-shadow: 0 6px 18px rgba(255, 87, 34, 0.4); 
   position: relative;
   overflow: hidden;
 }
@@ -132,5 +132,5 @@ input:focus {
 
 .voltarBtn:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 24px rgba(255, 87, 34, 0.6); /* sombra mais forte ao hover */
+  box-shadow: 0 10px 24px rgba(255, 87, 34, 0.6); 
 }

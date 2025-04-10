@@ -25,13 +25,19 @@ const Home = () => {
     navigate("/cadastro");
   };
 
+  //                                                                  {Redireciona o usuário para a página de dashboard}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+  const irParaDashboard = () => {
+    navigate("/dashboard");
+  };
+
   return (
     <div className={styles.background}>
       <div className={styles.pageContainer}>
         <div className={styles.card}>
           <h1 className={styles.titulo}>
             <FaTruckMoving className={styles.icon} />
-            Empreendize Truck Aluguel
+            Empreendize Truck Fretes
           </h1>
           <p className={styles.descricao}>
             Bem-vindo ao nosso sistema de aluguel de caminhões!
@@ -46,6 +52,9 @@ const Home = () => {
             </button>
             <button className={styles.btnSecundario} onClick={irParaCadastro}>
               Cadastro
+            </button>
+            <button className={styles.btnSecundario} onClick={irParaDashboard}>
+              Dashboard
             </button>
           </div>
         </div>

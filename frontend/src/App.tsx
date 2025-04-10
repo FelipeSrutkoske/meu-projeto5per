@@ -5,6 +5,7 @@ import CatalogoCaminhao from './pages/CatalogoCaminhao';
 import Home from "./pages/Home";
 import AlugarCaminhao from "./pages/AlugarCaminhao";
 import EditaUsuario from "./pages/EditaUsuario";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/alugarCaminhao/:idcaminhao" element={<AlugarCaminhao />} />
         <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/catalogoCaminhao" element={<CatalogoCaminhao />} />
         <Route path="/editaUsuario" element={<EditaUsuario />} />
       </Routes>
