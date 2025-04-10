@@ -9,29 +9,38 @@ export const autenticarToken = (
   const authHeader = req.headers["authorization"];
   const token = authHeader?.split(" ")[1];
 
+  console.log("🟡 Token recebido:", token); // 🔍 Loga o token recebido
+
   if (!token) {
+    console.warn("⛔ Token não fornecido");
     res.status(401).json({ erro: "Token não fornecido" });
     return;
   }
 
   jwt.verify(token, process.env.JWT_SECRET as string, (err, decoded) => {
-    if (err || !decoded || typeof decoded !== "object") {
+    if (err) {
+      console.error("❌ Erro na verificação do token:", err); // Erro detalhado
+    }
+
+    if (!decoded || typeof decoded !== "object") {
+      console.warn("⚠️ Token inválido ou malformado:", decoded); // Mostra o que foi decodificado
       res.status(403).json({ erro: "Token inválido" });
       return;
     }
 
     const payload = decoded as { id: number; email: string };
 
-    req.usuario = {
+    (req as any).usuario = {
       id: payload.id,
       email: payload.email,
     };
 
-    console.log("Usuário autenticado:", req.usuario); // ✅ deve aparecer agora!
+    console.log("✅ Usuário autenticado:", (req as any).usuario);
 
     next();
   });
 };
+
 
 
 

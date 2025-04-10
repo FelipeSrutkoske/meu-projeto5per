@@ -3,8 +3,6 @@ import jwt from "jsonwebtoken";
 import { UsuarioDTO } from "../../DTO/usuario";
 import { UsuarioDAO } from "../../DAO/usuario";
 
-const JWT_SECRET = "seuSegredoJWT"; // Idealmente, armazene isso em variáveis de ambiente
-
 interface UsuarioCorpo {
   idusuario?: number | null;
   nome: string;
@@ -79,7 +77,7 @@ export async function loginUsuario(email: string, senha: string): Promise<string
       // Gerar o token JWT
       const token = jwt.sign(
         { id: usuario.idusuario, email: usuario.email },
-        JWT_SECRET,
+        process.env.JWT_SECRET as string,
         { expiresIn: "1h" }
       );
   

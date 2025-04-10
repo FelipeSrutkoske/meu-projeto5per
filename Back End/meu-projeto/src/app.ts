@@ -3,6 +3,9 @@ import usuarioRoutes from "./Routes/Usuario";
 import caminhaoRoutes from "./Routes/Caminhao"; 
 import aluguelRoutes from "./Routes/Aluguel";
 import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
+
 
 const app = express();
 
