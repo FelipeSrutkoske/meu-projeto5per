@@ -101,6 +101,9 @@ const AlugarCaminhao = () => {
 
   return (
     <div className={styles.background}>
+      <button onClick={()=> navigate ("/catalogoCaminhao")} className={styles.voltarBtn}>
+          Voltar para Catalogo
+        </button>
       <div className={styles.container}>
         <h2 className={styles.title}>Alugar Caminhão</h2>
         {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
@@ -135,8 +138,9 @@ const AlugarCaminhao = () => {
             value={formData.valorTotal}
             readOnly
           />
-          <button type="submit">Alugar</button>
+          <button type="submit" className={styles.button}>Alugar</button>
         </form>
+        
       </div>
     </div>
   );

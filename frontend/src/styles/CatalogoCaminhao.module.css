@@ -1,81 +1,7 @@
-.catalogoWrapper {
-  padding: 20px;
-  text-align: center;
-}
-
-.titulo {
-  margin-bottom: 20px;
-  font-size: 2rem;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  justify-items: center;
-  padding: 10px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.card {
-  background-color: white;
-  color: #333;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  width: 220px;
-  height: 100%; /* deixa flexível, mas vamos controlar pela grid */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.btn {
-  margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #0077ff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #005ed1;
-}
-
-.voltarBtn {
-  margin-top: 30px;
-  padding: 10px 20px;
-  background-color: #444;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.voltarBtn:hover {
-  background-color: #222;
-}
-
-.mensagem {
-  color: red;
-  margin-bottom: 15px;
-}
-
 .pageContainer {
-  padding: 25% 20px 20px;
+  padding: 720px 20px 40px;
   text-align: center;
-  color: #213547;
+  color: #2b2b2b;
   overflow-x: hidden;
 }
 
@@ -92,20 +18,99 @@
 }
 
 .titleBox {
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 20px 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 14px 40px;
+  border-radius: 16px;
+  box-shadow: 6px 6px 0px #ffcc00;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  border: 3px dashed #ffcc00;
 }
 
 .title {
-  font-size: 2rem;
-  color: #333;
+  font-size: 2.2rem;
+  color: #ff6600;
+  text-shadow: 2px 2px #fff176;
   margin: 0;
+  font-weight: bold;
 }
 
+.mensagem {
+  color: red;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-shadow: 1px 1px #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  justify-items: center;
+  padding: 10px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #fff9e6;
+  margin-top: 50px;
+  color: #2b2b2b;
+  border: 3px solid #ffcc00;
+  border-radius: 16px;
+  box-shadow: 6px 6px 0px #ff9900;
+  padding: 20px;
+  width: 100%;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 8px 8px 0px #ff8f00;
+}
+
+.button {
+  background: linear-gradient(135deg, #ff6600, #ffcc00);
+  color: white;
+  border: 2px solid #ff9900;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 4px 4px 0px #e65100;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0px #e65100;
+}
+
+.voltarBtn {
+  margin-top: 30px;
+  background-color: #ffffff;
+  color: #ff6600;
+  border: 2px dashed #ff6600;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 3px 3px 0px #ffa726;
+}
+
+.voltarBtn:hover {
+  background-color: #ffcc80;
+  color: #ffffff;
+  border-color: #ffb74d;
+}

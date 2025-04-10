@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "../styles/CatalogoCaminhao.module.css";
 import { FiTruck } from "react-icons/fi";
 import { calcularPrecoPorDia } from "../utils/caminhaoUtils";
+import VoltarParaHome from "../components/VoltarParaHome";
 
 interface Caminhao {
   idcaminhao: number;
@@ -37,10 +38,6 @@ const CatalogoCaminhao = () => {
     fetchCaminhoes();
   }, []);
 
-  const voltarParaHome = () => {
-    navigate("/home");
-  };
-
   return (
     <div className={styles.background}>
       <div className={styles.pageContainer}>
@@ -74,9 +71,7 @@ const CatalogoCaminhao = () => {
           ))}
         </div>
 
-        <button onClick={voltarParaHome} className={styles.voltar}>
-          Voltar para Home
-        </button>
+        <VoltarParaHome />
       </div>
     </div>
   );

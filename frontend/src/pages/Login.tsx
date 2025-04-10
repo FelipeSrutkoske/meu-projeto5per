@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/Login.module.css";
 import api from "../services/api";
+import VoltarParaHome from "../components/VoltarParaHome";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -31,16 +32,12 @@ const Login = () => {
       const resposta = await api.post("/usuarios/login", { email, senha });
       localStorage.setItem("token", resposta.data.token);
       toast.success("Login realizado com sucesso!");
-      setTimeout(() => navigate("/home"), 1500);
+      setTimeout(() => navigate("/catalogoCaminhao"), 1500);
     } catch (err: any) {
       toast.error(err.response?.data?.erro || "Erro ao fazer login");
     } finally {
       setCarregando(false);
     }
-  };
-
-  const voltarParaHome = () => {
-    navigate("/home");
   };
 
   return (
@@ -71,9 +68,7 @@ const Login = () => {
             </button>
           </form>
 
-          <button onClick={voltarParaHome} className={styles.secondaryButton}>
-            Voltar para Home
-          </button>
+          <VoltarParaHome />
         </div>
 
         <ToastContainer position="top-center" />

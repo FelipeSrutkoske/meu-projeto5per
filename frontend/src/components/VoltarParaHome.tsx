@@ -1,19 +1,18 @@
-//import React from "react";
+// components/VoltarParaHome.tsx
 import { useNavigate } from "react-router-dom";
+import styles from "../styles/VoltarParaHome.module.css";
+import { FaHome } from "react-icons/fa";
 
 const VoltarParaHome = () => {
   const navigate = useNavigate();
 
-  const irParaHome = () => {
-    navigate("/home");
-  };
-
   return (
-    <div>
-      <h2>Página de Navegação</h2>
-      <button onClick={irParaHome}>Voltar para Home</button>
-    </div>
+    <button onClick={() => navigate("/")} className={styles.voltarBtn}>
+      <FaHome style={{ marginRight: "8px" }} />
+      Voltar para Home
+    </button>
   );
 };
 
 export default VoltarParaHome;
+
