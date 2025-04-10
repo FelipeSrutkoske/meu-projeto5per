@@ -9,6 +9,8 @@ interface Caminhao {
   precoPorDia?: number;
 }
 
+//                                                                  {Componente de aluguel de caminhão por ID}                                                                       //
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 const AlugarCaminhao = () => {
   const { idcaminhao } = useParams();
   const navigate = useNavigate();
@@ -24,6 +26,8 @@ const AlugarCaminhao = () => {
   const [caminhaoInfo, setCaminhaoInfo] = useState<Caminhao | null>(null);
   const [mensagem, setMensagem] = useState("");
 
+  //                                                                  {Busca os dados do caminhão com base no ID da URL}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
   useEffect(() => {
     if (idcaminhao) {
       setFormData((prev) => ({ ...prev, idcaminhao }));
@@ -48,6 +52,8 @@ const AlugarCaminhao = () => {
     }
   }, [idcaminhao]);
 
+  //                                                                  {Calcula automaticamente o valor total com base nas datas e preço por dia}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
   useEffect(() => {
     const calcularValorTotal = () => {
       const { dataInicio, dataFim } = formData;
@@ -69,10 +75,14 @@ const AlugarCaminhao = () => {
     calcularValorTotal();
   }, [formData.dataInicio, formData.dataFim, caminhaoInfo]);
 
+  //                                                                  {Atualiza os campos do formulário conforme o usuário digita}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  //                                                                  {Envia os dados do aluguel para o servidor e trata a resposta}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -103,7 +113,7 @@ const AlugarCaminhao = () => {
     <div className={styles.background}>
       <button onClick={()=> navigate ("/catalogoCaminhao")} className={styles.voltarBtn}>
           Voltar para Catalogo
-        </button>
+      </button>
       <div className={styles.container}>
         <h2 className={styles.title}>Alugar Caminhão</h2>
         {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
@@ -140,11 +150,9 @@ const AlugarCaminhao = () => {
           />
           <button type="submit" className={styles.button}>Alugar</button>
         </form>
-        
       </div>
     </div>
   );
-  
 };
 
 export default AlugarCaminhao;

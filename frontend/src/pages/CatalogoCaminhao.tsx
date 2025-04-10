@@ -14,11 +14,15 @@ interface Caminhao {
   precoPorKm?: number;
 }
 
+//                                                                  {Componente que exibe todos os caminhões disponíveis para aluguel}                                                                       //
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 const CatalogoCaminhao = () => {
   const [caminhoes, setCaminhoes] = useState<Caminhao[]>([]);
   const [mensagem, setMensagem] = useState("");
   const navigate = useNavigate();
 
+  //                                                                  {Busca os caminhões disponíveis na API ao carregar o componente}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
   useEffect(() => {
     const fetchCaminhoes = async () => {
       try {

@@ -1,12 +1,11 @@
-// ✅ Tratamento adequado de mensagens de sucesso e erro com toastify
-// ✅ Resposta do servidor lida como JSON, com verificação de erro e mensagem
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/Cadastro.module.css";
 
+//                                                                  {Componente de cadastro de novo usuário}                                                                       //
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 const Cadastro = () => {
   const [formData, setFormData] = useState({
     nome: "",
@@ -19,10 +18,14 @@ const Cadastro = () => {
 
   const navigate = useNavigate();
 
+  //                                                                  {Atualiza os dados do formulário conforme o usuário digita}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  //                                                                  {Envia os dados do formulário para o backend e trata a resposta}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
@@ -46,13 +49,13 @@ const Cadastro = () => {
   
       const resultado = await response.json();
   
-      // 🛑 Se veio erro, mostra erro e para tudo
+      // Se veio erro, mostra erro e para tudo
       if (resultado.erro || !response.ok) {
         toast.error(resultado.erro || "Erro ao cadastrar.");
         return;
       }
   
-      // ✅ Se passou, exibe sucesso
+      // Se passou, exibe sucesso
       console.log("Resultado da API:", resultado);
       toast.success(resultado.mensagem || "Cadastro realizado com sucesso!");
       setTimeout(() => navigate("/login"), 1500);
@@ -62,7 +65,6 @@ const Cadastro = () => {
       toast.error(error.message || "Erro ao conectar com o servidor.");
     }
   };
-  
 
   return (
     <div className={styles.background}>

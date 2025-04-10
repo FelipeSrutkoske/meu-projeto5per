@@ -7,29 +7,35 @@ import styles from "../styles/Login.module.css";
 import api from "../services/api";
 import VoltarParaHome from "../components/VoltarParaHome";
 
+//                                                                  {Componente de Login - Página principal que lida com autenticação de usuário}                                                                       //
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [carregando, setCarregando] = useState(false);
-  const [erroLogin, setErroLogin] = useState(""); // <- Novo estado para exibir o erro
+  const [erroLogin, setErroLogin] = useState(""); 
   const navigate = useNavigate();
 
+  //                                                                  {Validar Email com Regex para garantir formato válido}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
   const validarEmail = (email: string) => {
     const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     return regex.test(email);
   };
 
+  //                                                                  {Função responsável por lidar com o envio do formulário de login e autenticar o usuário via API}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validarEmail(email)) {
       toast.error("E-mail inválido.");
-      setErroLogin("E-mail inválido."); // <- Define o erro no estado
+      setErroLogin("E-mail inválido."); 
       return;
     }
 
     setCarregando(true);
-    setErroLogin(""); // <- Limpa qualquer erro anterior antes de tentar login
+    setErroLogin(""); 
 
     try {
       const resposta = await api.post("/usuarios/login", { email, senha });
@@ -39,7 +45,7 @@ const Login = () => {
     } catch (err: any) {
       const mensagemErro = err.response?.data?.erro || "Erro ao fazer login";
       toast.error(mensagemErro);
-      setErroLogin(mensagemErro); // <- Mostra o erro também na interface
+      setErroLogin(mensagemErro); 
     } finally {
       setCarregando(false);
     }
@@ -72,7 +78,6 @@ const Login = () => {
               {carregando ? "Entrando..." : "Entrar"}
             </button>
 
-            {/* Exibe a mensagem de erro na interface caso ocorra */}
             {erroLogin && <p className={styles.erro}>{erroLogin}</p>}
           </form>
 

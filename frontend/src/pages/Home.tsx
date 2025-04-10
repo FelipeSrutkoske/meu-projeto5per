@@ -2,17 +2,25 @@ import { useNavigate } from "react-router-dom";
 import { FaTruckMoving } from "react-icons/fa";
 import styles from "../styles/Home.module.css";
 
+//                                                                  {Componente da Home - Página inicial com navegação para login, cadastro e catálogo}                                                                       //
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
 const Home = () => {
   const navigate = useNavigate();
 
+  //                                                                  {Redireciona o usuário para a página de catálogo de caminhões}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
   const irParaCatalogo = () => {
     navigate("/catalogoCaminhao");
   };
 
+  //                                                                  {Redireciona o usuário para a página de login}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
   const irParaLogin = () => {
     navigate("/login");
   };
 
+  //                                                                  {Redireciona o usuário para a página de cadastro}                                                                       //
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
   const irParaCadastro = () => {
     navigate("/cadastro");
   };
