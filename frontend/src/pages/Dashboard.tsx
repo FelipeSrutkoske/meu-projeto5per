@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Dashboard.module.css";
 import api from "../services/api";
+import Navbar from "../components/Navbar";
 
 
 const Dashboard = () => {
@@ -42,37 +43,37 @@ const Dashboard = () => {
   }
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.background}></div>
+    <>
+      <Navbar />
+      <div className={styles.wrapper}>
+        <div className={styles.background}></div>
 
-      <div className={styles.container}>
-        <h2 className={styles.title}>Bem-vindo, {usuario.nome}!</h2>
+        <div className={styles.container}>
+          <h2 className={styles.title}>Bem-vindo, {usuario.nome}!</h2>
 
-        <div className={styles.infoBox}>
-          <span className={styles.infoLabel}>Nome:</span>
-          <span className={styles.infoValue}>{usuario.nome}</span>
+          <div className={styles.infoBox}>
+            <span className={styles.infoLabel}>Nome:</span>
+            <span className={styles.infoValue}>{usuario.nome}</span>
 
-          <span className={styles.infoLabel}>Sobrenome:</span>
-          <span className={styles.infoValue}>{usuario.sobrenome}</span>
+            <span className={styles.infoLabel}>Sobrenome:</span>
+            <span className={styles.infoValue}>{usuario.sobrenome}</span>
 
-          <span className={styles.infoLabel}>Email:</span>
-          <span className={styles.infoValue}>{usuario.email}</span>
+            <span className={styles.infoLabel}>Email:</span>
+            <span className={styles.infoValue}>{usuario.email}</span>
 
-          <span className={styles.infoLabel}>CPF:</span>
-          <span className={styles.infoValue}>{usuario.cpf}</span>
+            <span className={styles.infoLabel}>CPF:</span>
+            <span className={styles.infoValue}>{usuario.cpf}</span>
 
-          <span className={styles.infoLabel}>ID do Usuário:</span>
-          <span className={styles.infoValue}>{usuario.idusuario}</span>
+            <span className={styles.infoLabel}>ID do Usuário:</span>
+            <span className={styles.infoValue}>{usuario.idusuario}</span>
+          </div>
+
+          <button className={styles.voltarBtn} onClick={() => navigate("/editausuario")}>
+            Atualizar Usuário
+          </button>
         </div>
-
-        <button className={styles.voltarBtn} onClick={() => navigate("/")}>
-          Voltar
-        </button>
-        <button className={styles.voltarBtn} onClick={() => navigate("/editausuario")}>
-          Atualizar Usuário
-        </button>
       </div>
-    </div>
+    </>
   );
 };
 

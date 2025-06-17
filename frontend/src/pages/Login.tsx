@@ -5,7 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/Login.module.css";
 import api from "../services/api";
-import VoltarParaHome from "../components/VoltarParaHome";
+import Navbar from "../components/Navbar";
 
 //                                                                  {Componente de Login - Página principal que lida com autenticação de usuário}                                                                       //
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -52,41 +52,42 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.background}>
-      <div className={styles.container}>
-        <div className={styles.card}>
-          <FaUserCircle className={styles.icon} />
-          <h2 className={styles.title}>Login</h2>
+    <>
+      <Navbar />
+      <div className={styles.background}>
+        <div className={styles.container}>
+          <div className={styles.card}>
+            <FaUserCircle className={styles.icon} />
+            <h2 className={styles.title}>Login</h2>
 
-          <form onSubmit={handleLogin} className={styles.form}>
-            <input
-              className={styles.input}
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              className={styles.input}
-              type="password"
-              placeholder="Senha"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-            />
+            <form onSubmit={handleLogin} className={styles.form}>
+              <input
+                className={styles.input}
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                className={styles.input}
+                type="password"
+                placeholder="Senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+              />
 
-            <button type="submit" className={styles.button} disabled={carregando}>
-              {carregando ? "Entrando..." : "Entrar"}
-            </button>
+              <button type="submit" className={styles.button} disabled={carregando}>
+                {carregando ? "Entrando..." : "Entrar"}
+              </button>
 
-            {erroLogin && <p className={styles.erro}>{erroLogin}</p>}
-          </form>
+              {erroLogin && <p className={styles.erro}>{erroLogin}</p>}
+            </form>
+          </div>
 
-          <VoltarParaHome />
+          <ToastContainer position="top-center" />
         </div>
-
-        <ToastContainer position="top-center" />
       </div>
-    </div>
+    </>
   );
 };
 

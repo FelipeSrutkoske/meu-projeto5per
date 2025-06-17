@@ -1,47 +1,41 @@
-.container {
+.background {
+  background-color: #f0f2f5;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding: 20px;
   box-sizing: border-box;
 }
 
-.background {
-  background-image: url(../assets/images/loginBackground.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: 100vh;
-  min-width: 100vw;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+.container {
+  width: 100%;
 }
 
 .card {
-  background-color: #fff9e6; 
-  color: #2b2b2b;
+  background-color: #ffffff;
+  color: #333;
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 6px 6px 0px #ff9900;
-  border: 3px solid #ffcc00; 
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
   max-width: 400px;
   width: 100%;
   text-align: center;
+  margin: 0 auto;
 }
 
 .icon {
   font-size: 3rem;
-  color: #ff6600;
+  color: #3498db;
   margin-bottom: 20px;
 }
 
 .title {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #ff6600;
-  text-shadow: 2px 2px #fff176;
+  color: #333;
+  font-weight: 600;
 }
 
 .form {
@@ -52,52 +46,38 @@
 
 .input {
   padding: 12px;
-  border-radius: 8px;
-  border: 2px solid #ffcc80;
+  border-radius: 5px;
+  border: 1px solid #ccc;
   font-size: 1rem;
-  background-color: #fffdf7;
-  transition: all 0.3s;
+  background-color: #fff;
+  transition: border-color 0.2s ease;
 }
 
 .input:focus {
   outline: none;
-  border-color: #ffa726;
-  background-color: #fff3c0;
+  border-color: #3498db;
 }
 
 .button {
-  background: linear-gradient(135deg, #ff6600, #ffcc00);
+  background-color: #3498db;
   color: white;
-  border: 2px solid #ff9900;
+  border: none;
   padding: 12px;
-  border-radius: 10px;
-  font-weight: bold;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 4px 4px 0px #e65100;
+  transition: background-color 0.2s ease;
 }
 
 .button:hover {
-  background-color: #e65c00;
-  transform: scale(1.03);
-  box-shadow: 6px 6px 0px #e65100;
+  background-color: #2980b9;
 }
 
-.secondaryButton {
-  margin-top: 1rem;
-  padding: 10px 20px;
-  background-color: transparent;
-  color: #ff6600;
-  border: 2px solid #ff6600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.erro {
+  color: #e74c3c;
+  margin-top: 10px;
   font-weight: 500;
-}
-
-.secondaryButton:hover {
-  background-color: #ff6600;
-  color: white;
 }
 
 .voltarBtn {

@@ -12,27 +12,22 @@ interface UsuarioCorpo {
   cpf: string;
 }
 
-// 🟢 Buscar todos os usuários
 export function getAllUsuarios(): Promise<UsuarioDTO[]> {
   return UsuarioDAO.getAllUsuarios();
 }
 
-// 🟢 Buscar usuário por ID
 export function getUsuarioPorId(id: number): Promise<UsuarioDTO | null> {
     return UsuarioDAO.getUsuarioById(id);
   }  
 
-// 🔵 Cadastrar novo usuário com senha criptografada
 export async function gravaNovoUsuario(usuarioCorpo: UsuarioCorpo): Promise<string> {
   // Validações
   if (!validarEmail(usuarioCorpo.email)) return "Email inválido";
   if (!validarCPF(usuarioCorpo.cpf)) return "CPF inválido";
   if (!validarSenha(usuarioCorpo.senha)) return "Senha fraca";
 
-  // Criptografar senha
   const senhaCriptografada = await bcrypt.hash(usuarioCorpo.senha, 10);
 
-  // Criar DTO
   const usuario = new UsuarioDTO(null, usuarioCorpo.nome, usuarioCorpo.sobrenome, usuarioCorpo.email, senhaCriptografada, usuarioCorpo.cpf);
 
   return UsuarioDAO.gravaNovoUsuario(usuario);
@@ -45,7 +40,7 @@ export async function atualizaUsuario(usuarioCorpo: UsuarioCorpo): Promise<strin
 
   usuarioCorpo.email = usuarioExistente.email;
 
-  const idusuario = usuarioCorpo.idusuario ?? null;  // Se idusuario for undefined, atribui null
+  const idusuario = usuarioCorpo.idusuario ?? null;  
   const usuario = new UsuarioDTO(idusuario, usuarioCorpo.nome, usuarioCorpo.sobrenome, usuarioCorpo.email, usuarioExistente.senha, usuarioCorpo.cpf);
 
   return UsuarioDAO.atualizaUsuario(usuario);

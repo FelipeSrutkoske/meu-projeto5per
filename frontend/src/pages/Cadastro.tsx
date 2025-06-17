@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/Cadastro.module.css";
+import Navbar from "../components/Navbar";
 
 //                                                                  {Componente de cadastro de novo usuário}                                                                       //
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -67,66 +68,69 @@ const Cadastro = () => {
   };
 
   return (
-    <div className={styles.background}>
-      <div className={styles.pageContainer}>
-        <div className={styles.titleBox}>
-          <h2 className={styles.titulo}>Cadastro de Usuário</h2>
-        </div>
-        <form onSubmit={handleSubmit} className={styles.card}>
-          <input
-            type="text"
-            name="nome"
-            placeholder="Nome"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="sobrenome"
-            placeholder="Sobrenome"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="cpf"
-            placeholder="CPF"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="senha"
-            placeholder="Senha"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="confirmarSenha"
-            placeholder="Confirmar Senha"
-            onChange={handleChange}
-            required
-          />
-          <button type="submit" className={styles.btn}>
-            Cadastrar
+    <>
+      <Navbar />
+      <div className={styles.background}>
+        <div className={styles.pageContainer}>
+          <div className={styles.titleBox}>
+            <h2 className={styles.titulo}>Cadastro de Usuário</h2>
+          </div>
+          <form onSubmit={handleSubmit} className={styles.card}>
+            <input
+              type="text"
+              name="nome"
+              placeholder="Nome"
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="sobrenome"
+              placeholder="Sobrenome"
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="cpf"
+              placeholder="CPF"
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="password"
+              name="senha"
+              placeholder="Senha"
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="password"
+              name="confirmarSenha"
+              placeholder="Confirmar Senha"
+              onChange={handleChange}
+              required
+            />
+            <button type="submit" className={styles.btn}>
+              Cadastrar
+            </button>
+          </form>
+
+          <button onClick={() => navigate("/")} className={styles.voltarBtn}>
+            Voltar
           </button>
-        </form>
 
-        <button onClick={() => navigate("/")} className={styles.voltarBtn}>
-          Voltar
-        </button>
-
-        <ToastContainer position="top-center" />
+          <ToastContainer position="top-center" />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

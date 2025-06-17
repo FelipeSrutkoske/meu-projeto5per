@@ -1,7 +1,6 @@
 import { gravaNovoCaminhao, getCaminhaoPorId } from "../Caminhao";
 import { CaminhaoDAO } from "../../DAO/Caminhao";
 
-// Mock da DAO
 jest.mock("../../DAO/Caminhao", () => ({
   CaminhaoDAO: {
     gravaNovoCaminhao: jest.fn().mockResolvedValue("Caminhão cadastrado com sucesso!"),

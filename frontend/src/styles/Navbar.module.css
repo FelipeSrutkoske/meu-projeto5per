@@ -1,0 +1,38 @@
+.navbar {
+  background-color: #333;
+  padding: 1rem;
+  color: white;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.navLogo {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.navMenu {
+  display: flex;
+  list-style: none;
+}
+
+.navItem {
+  margin-left: 1.5rem;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.navLink:hover {
+  color: #ddd;
+}

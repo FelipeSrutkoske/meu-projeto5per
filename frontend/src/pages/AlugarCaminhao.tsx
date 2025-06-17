@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { calcularPrecoPorDia } from "../utils/caminhaoUtils";
 import styles from '../styles/AlugarCaminhao.module.css';
+import Navbar from "../components/Navbar";
 
 interface Caminhao {
   modelo: string;
@@ -110,48 +111,51 @@ const AlugarCaminhao = () => {
   };
 
   return (
-    <div className={styles.background}>
-      <button onClick={()=> navigate ("/catalogoCaminhao")} className={styles.voltarBtn}>
-          Voltar para Catalogo
-      </button>
-      <div className={styles.container}>
-        <h2 className={styles.title}>Alugar Caminhão</h2>
-        {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
-  
-        {caminhaoInfo && (
-          <div className={styles.caminhaoInfo}>
-            <h3>{caminhaoInfo.modelo}</h3>
-            <p>Ano: {caminhaoInfo.ano}</p>
-            <p>Preço por Dia: R$ {caminhaoInfo.precoPorDia?.toFixed(2)}</p>
-          </div>
-        )}
-  
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <input
-            type="text"
-            name="idusuario"
-            placeholder="ID do Usuário"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="idcaminhao"
-            value={formData.idcaminhao}
-            readOnly
-          />
-          <input type="date" name="dataInicio" onChange={handleChange} required />
-          <input type="date" name="dataFim" onChange={handleChange} required />
-          <input
-            type="text"
-            name="valorTotal"
-            value={formData.valorTotal}
-            readOnly
-          />
-          <button type="submit" className={styles.button}>Alugar</button>
-        </form>
+    <>
+      <Navbar />
+      <div className={styles.background}>
+        <button onClick={()=> navigate ("/catalogoCaminhao")} className={styles.voltarBtn}>
+            Voltar para Catalogo
+        </button>
+        <div className={styles.container}>
+          <h2 className={styles.title}>Alugar Caminhão</h2>
+          {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
+    
+          {caminhaoInfo && (
+            <div className={styles.caminhaoInfo}>
+              <h3>{caminhaoInfo.modelo}</h3>
+              <p>Ano: {caminhaoInfo.ano}</p>
+              <p>Preço por Dia: R$ {caminhaoInfo.precoPorDia?.toFixed(2)}</p>
+            </div>
+          )}
+    
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <input
+              type="text"
+              name="idusuario"
+              placeholder="ID do Usuário"
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="idcaminhao"
+              value={formData.idcaminhao}
+              readOnly
+            />
+            <input type="date" name="dataInicio" onChange={handleChange} required />
+            <input type="date" name="dataFim" onChange={handleChange} required />
+            <input
+              type="text"
+              name="valorTotal"
+              value={formData.valorTotal}
+              readOnly
+            />
+            <button type="submit" className={styles.button}>Alugar</button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

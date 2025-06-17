@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/EditaUsuario.module.css"; // Importando o CSS module
+import Navbar from "../components/Navbar";
 
 export default function EditarUsuario() {
   const navigate = useNavigate();
@@ -79,45 +80,48 @@ export default function EditarUsuario() {
   }
 
   return (
-    <div className={styles.background}>
-      <div className={styles.container}>
-        <div className={styles.editarCard}>
-          <h2 className={styles.editarTitulo}>Editar Perfil</h2>
-          {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
-          <form className={styles.form} onSubmit={handleSubmit}>
-            <input
-              className={styles.input}
-              type="text"
-              name="nome"
-              value={formData.nome}
-              onChange={handleChange}
-              placeholder="Nome"
-              required
-            />
-            <input
-              className={styles.input}
-              type="text"
-              name="sobrenome"
-              value={formData.sobrenome}
-              onChange={handleChange}
-              placeholder="Sobrenome"
-              required
-            />
-            <input
-              className={styles.input}
-              type="text"
-              name="cpf"
-              value={formData.cpf}
-              onChange={handleChange}
-              placeholder="CPF"
-              required
-            />
-            <button type="submit" className={styles.button}>
-              Salvar
-            </button>
-          </form>
+    <>
+      <Navbar />
+      <div className={styles.background}>
+        <div className={styles.container}>
+          <div className={styles.editarCard}>
+            <h2 className={styles.editarTitulo}>Editar Perfil</h2>
+            {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <input
+                className={styles.input}
+                type="text"
+                name="nome"
+                value={formData.nome}
+                onChange={handleChange}
+                placeholder="Nome"
+                required
+              />
+              <input
+                className={styles.input}
+                type="text"
+                name="sobrenome"
+                value={formData.sobrenome}
+                onChange={handleChange}
+                placeholder="Sobrenome"
+                required
+              />
+              <input
+                className={styles.input}
+                type="text"
+                name="cpf"
+                value={formData.cpf}
+                onChange={handleChange}
+                placeholder="CPF"
+                required
+              />
+              <button type="submit" className={styles.button}>
+                Salvar
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

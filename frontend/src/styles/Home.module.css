@@ -1,57 +1,55 @@
 .pageContainer {
-  padding: 10% 20px 40px;
+  padding: 4rem 20px;
   text-align: center;
-  color: #2b2b2b;
+  color: #333;
   overflow-x: hidden;
 }
 
 .background {
-  background-image: url(../assets/images/homeBackground2.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-color: #f0f2f5;
   min-height: 100vh;
-  min-width: 100vw;
+  width: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
 .card {
-  background-color: #fff9e6; 
-  color: #2b2b2b;
-  border: 3px solid #ffcc00;
-  border-radius: 16px;
-  box-shadow: 6px 6px 0px #ff9900; 
-  padding: 24px;
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 30px;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .titulo {
-  font-size: 2rem;
+  font-size: 2.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 16px;
-  color: #ff6600;
-  text-shadow: 2px 2px #fff176;
+  gap: 12px;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
 }
 
 .icon {
   font-size: 2.5rem;
-  color: #ff6600;
+  color: #3498db;
 }
 
 .descricao {
   font-size: 1.1rem;
-  margin-bottom: 24px;
-  color: #444;
+  margin-bottom: 20px;
+  color: #555;
+  line-height: 1.6;
 }
 
 .botoes {
@@ -62,38 +60,32 @@
 }
 
 .btn {
-  background: linear-gradient(135deg, #ff6600, #ffcc00);
+  background-color: #3498db;
   color: white;
-  border: 2px solid #ff9900;
-  padding: 10px 20px;
+  border: none;
+  padding: 12px 24px;
   font-size: 1rem;
-  border-radius: 12px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-  box-shadow: 4px 4px 0px #e65100;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 6px 6px 0px #e65100;
+  background-color: #2980b9;
 }
 
 .btnSecundario {
-  background-color: #ffffff;
-  color: #ff6600;
-  border: 2px dashed #ff6600;
-  padding: 10px 20px;
+  background-color: #ecf0f1;
+  color: #333;
+  border: 1px solid #bdc3c7;
+  padding: 12px 24px;
   font-size: 1rem;
-  border-radius: 12px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 3px 3px 0px #ffa726;
+  transition: background-color 0.2s ease;
 }
 
 .btnSecundario:hover {
-  background-color: #ffcc80;
-  color: #ffffff;
-  border-color: #ffb74d;
+  background-color: #dadedf;
 }
-
-  

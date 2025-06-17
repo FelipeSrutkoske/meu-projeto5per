@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { FaTruckMoving } from "react-icons/fa";
 import styles from "../styles/Home.module.css";
+import Navbar from "../components/Navbar";
 
 //                                                                  {Componente da Home - Página inicial com navegação para login, cadastro e catálogo}                                                                       //
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -32,34 +33,37 @@ const Home = () => {
   };
 
   return (
-    <div className={styles.background}>
-      <div className={styles.pageContainer}>
-        <div className={styles.card}>
-          <h1 className={styles.titulo}>
-            <FaTruckMoving className={styles.icon} />
-            Empreendize Truck Fretes
-          </h1>
-          <p className={styles.descricao}>
-            Bem-vindo ao nosso sistema de aluguel de caminhões!
-            Aqui você pode encontrar veículos prontos para atender às suas necessidades de transporte com segurança, agilidade e preço justo.
-          </p>
-          <div className={styles.botoes}>
-            <button className={styles.btn} onClick={irParaCatalogo}>
-              Ver Caminhões Disponíveis
-            </button>
-            <button className={styles.btnSecundario} onClick={irParaLogin}>
-              Login
-            </button>
-            <button className={styles.btnSecundario} onClick={irParaCadastro}>
-              Cadastro
-            </button>
-            <button className={styles.btnSecundario} onClick={irParaDashboard}>
-              Dashboard
-            </button>
+    <>
+      <Navbar />
+      <div className={styles.background}>
+        <div className={styles.pageContainer}>
+          <div className={styles.card}>
+            <h1 className={styles.titulo}>
+              <FaTruckMoving className={styles.icon} />
+              Empreendize Truck Fretes
+            </h1>
+            <p className={styles.descricao}>
+              Bem-vindo ao nosso sistema de aluguel de caminhões!
+              Aqui você pode encontrar veículos prontos para atender às suas necessidades de transporte com segurança, agilidade e preço justo.
+            </p>
+            <div className={styles.botoes}>
+              <button className={styles.btn} onClick={irParaCatalogo}>
+                Ver Caminhões Disponíveis
+              </button>
+              <button className={styles.btnSecundario} onClick={irParaLogin}>
+                Login
+              </button>
+              <button className={styles.btnSecundario} onClick={irParaCadastro}>
+                Cadastro
+              </button>
+              <button className={styles.btnSecundario} onClick={irParaDashboard}>
+                Dashboard
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

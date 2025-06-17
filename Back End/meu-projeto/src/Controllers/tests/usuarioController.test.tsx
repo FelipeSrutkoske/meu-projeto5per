@@ -1,7 +1,6 @@
 import { gravaNovoUsuario } from "../../Controllers/Usuario";
 import { UsuarioDAO } from "../../DAO/usuario";
 
-// Mock da DAO para evitar acesso ao banco de dados real
 jest.mock("../../DAO/usuario");
 
 describe("Testes do Controller de Usuário", () => {
