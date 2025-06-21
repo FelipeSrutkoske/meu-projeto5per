@@ -1,5 +1,5 @@
 # .gitignore do Backend
-
+.env
 # Pasta de build
 /dist
 
