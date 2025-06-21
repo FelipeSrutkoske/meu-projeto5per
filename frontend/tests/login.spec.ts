@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const HOST = 'http://localhost:5173';
+const HOST = '';
 
 test.describe('Fluxo de login', () => {
   test('Navbar aparece e navega para Login', async ({ page }) => {

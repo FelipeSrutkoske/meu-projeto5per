@@ -4,7 +4,7 @@ const gerarCPF = () => {
     return Array.from({ length: 11 }, () => Math.floor(Math.random() * 10)).join('');
   };
 
-const BASE_URL = 'http://localhost:5173'; 
+const BASE_URL = ''; 
 
 test.describe('Cadastro de Usuário', () => {
   test('deve cadastrar um novo usuário com sucesso', async ({ page }) => {

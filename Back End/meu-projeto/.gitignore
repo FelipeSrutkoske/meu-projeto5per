@@ -1,0 +1,7 @@
+# .gitignore do Backend
+
+# Pasta de build
+/dist
+
+# Dependências
+/node_modules

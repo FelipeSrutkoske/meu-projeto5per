@@ -11,7 +11,7 @@ test('alugar caminhao', async ({ page }) => {
 
   const formatarData = (data: Date) => data.toISOString().split('T')[0];
 
-  await page.goto('http://localhost:5173/alugarCaminhao/5');
+  await page.goto('\/alugarCaminhao\/5');
 
   await page.fill('input[name="idusuario"]', '1');
   await page.fill('input[name="dataInicio"]', formatarData(dataInicio));

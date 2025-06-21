@@ -35,7 +35,7 @@ const AlugarCaminhao = () => {
 
       const fetchCaminhao = async () => {
         try {
-          const response = await fetch(`http://localhost:3000/caminhoes/${idcaminhao}`);
+          const response = await fetch(`/caminhoes/${idcaminhao}`);
           if (response.ok) {
             const data = await response.json();
             const precoPorDiaCalculado = calcularPrecoPorDia(data.ano);
@@ -88,7 +88,7 @@ const AlugarCaminhao = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/aluguel/novo", {
+      const response = await fetch("/aluguel/novo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)

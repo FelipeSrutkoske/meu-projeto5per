@@ -26,7 +26,7 @@ const CatalogoCaminhao = () => {
   useEffect(() => {
     const fetchCaminhoes = async () => {
       try {
-        const response = await fetch("http://localhost:3000/caminhoes");
+        const response = await fetch("/caminhoes");
         if (response.ok) {
           const data = await response.json();
           setCaminhoes(data);
