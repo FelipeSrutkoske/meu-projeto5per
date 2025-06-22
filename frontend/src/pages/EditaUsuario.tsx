@@ -21,7 +21,7 @@ export default function EditarUsuario() {
       return;
     }
 
-    fetch("http://localhost:3000/usuarios", {
+    fetch("/usuarios", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -56,7 +56,7 @@ export default function EditarUsuario() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("http://localhost:3000/usuarios/atualizaUsuario", {
+      const response = await fetch("/usuarios/atualizaUsuario", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -1,7 +1,13 @@
 .navbar {
-  background-color: #333;
+  background: linear-gradient(90deg, #0d47a1 0%, #1976d2 100%);
   padding: 1rem;
   color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navContainer {
@@ -13,9 +19,11 @@
 }
 
 .navLogo {
-  color: white;
+  color: #fff;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .navMenu {
@@ -31,8 +39,26 @@
   color: white;
   text-decoration: none;
   font-size: 1rem;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.2s ease;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.2s ease;
 }
 
 .navLink:hover {
-  color: #ddd;
+  color: #e3f2fd;
+}
+
+.navLink:hover::after {
+  width: 100%;
 }

@@ -1,11 +1,12 @@
 .background {
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
+  padding-top: 80px;
 }
 
 .container {
@@ -13,7 +14,7 @@
 }
 
 .card {
-  background-color: #ffffff;
+  background: linear-gradient(145deg, #ffffff 0%, #f6f8ff 100%);
   color: #333;
   padding: 40px;
   border-radius: 8px;
@@ -83,21 +84,21 @@
 .voltarBtn {
   margin-top: 30px;
   padding: 12px 24px;
-  background-color: #00bcd4;
-  color: #fff;
-  border: none;
+  background-color: #ecf0f1;
+  color: #333;
+  border: 1px solid #bdc3c7;
   border-radius: 8px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.5);
-  transition: all 0.3s ease;
+  box-shadow: none;
+  transition: background-color 0.2s ease;
 }
 
 .voltarBtn:hover {
-  background-color: #0097a7;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 151, 167, 0.5);
+  background-color: #dadedf;
+  transform: none;
+  box-shadow: none;
 }
 
 @media (max-width: 480px) {

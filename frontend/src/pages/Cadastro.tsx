@@ -36,7 +36,7 @@ const Cadastro = () => {
     }
   
     try {
-      const response = await fetch("http://localhost:3000/usuarios/novoUsuario", {
+      const response = await fetch("/usuarios/novoUsuario", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

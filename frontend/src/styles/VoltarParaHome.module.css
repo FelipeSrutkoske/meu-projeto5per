@@ -1,17 +1,15 @@
 .voltarBtn {
     margin-top: 30px;
     padding: 12px 24px;
-    background: linear-gradient(135deg, #ffff22, #ff0798); 
-    color: white;
-    border: none;
+    background-color: #ecf0f1;
+    color: #333;
+    border: 1px solid #bdc3c7;
+    box-shadow: none;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
     border-radius: 12px;
     cursor: pointer;
     font-size: 1.1rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 18px rgba(255, 87, 34, 0.4); 
-    position: relative;
-    overflow: hidden;
   }
   
   .voltarBtn::before {
@@ -31,7 +29,8 @@
   }
   
   .voltarBtn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 24px rgba(255, 87, 34, 0.6); 
+    background-color: #dadedf;
+    transform: none;
+    box-shadow: none;
   }
   

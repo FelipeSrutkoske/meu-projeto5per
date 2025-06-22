@@ -7,22 +7,22 @@ const Navbar: React.FC = () => {
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
         <Link to="/" className={styles.navLogo}>
-          MeuProjeto
+          Empreedize Fretes
         </Link>
         <ul className={styles.navMenu}>
           <li className={styles.navItem}>
-            <Link to="/" className={styles.navLink}>
-              Home
-            </Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link to="/catalogo" className={styles.navLink}>
-              Catálogo
-            </Link>
-          </li>
-          <li className={styles.navItem}>
             <Link to="/login" className={styles.navLink}>
               Login
+            </Link>
+          </li>
+          <li className={styles.navItem}>
+            <Link to="/catalogoCaminhao" className={styles.navLink}>
+              Catálogo de caminhões
+            </Link>
+          </li>
+          <li className={styles.navItem}>
+            <Link to="/dashboard" className={styles.navLink}>
+              Dashboard
             </Link>
           </li>
         </ul>

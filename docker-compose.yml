@@ -1,0 +1,52 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: meu-app-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3307:3306"
+
+  backend:
+    build: ./Back End/meu-projeto/
+    container_name: meu-app-backend
+    restart: always
+    env_file:
+      - ./Back End/meu-projeto/.env
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USER=meuapp
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend/
+    container_name: meu-app-frontend
+    volumes:
+      - build_frontend:/app/dist
+    command: sh -c "npm run build && tail -f /dev/null"
+
+  nginx:
+    build: ./nginx/
+    container_name: meu-app-nginx
+    ports:
+      - "80:80"
+      - "443:443" 
+    volumes:
+      - build_frontend:/var/www/frontend:ro
+    depends_on:
+      - backend
+      - frontend
+
+volumes:
+  mysql_data:
+  build_frontend:
