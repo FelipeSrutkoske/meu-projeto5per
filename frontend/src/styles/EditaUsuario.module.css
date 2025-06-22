@@ -1,11 +1,12 @@
 .background {
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4rem 20px;
   box-sizing: border-box;
+  padding-top: 80px;
 }
 
 .container {
@@ -14,7 +15,7 @@
 }
 
 .editarCard {
-  background-color: #ffffff;
+  background: linear-gradient(145deg, #ffffff 0%, #f6f8ff 100%);
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 30px;

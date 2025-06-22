@@ -1,14 +1,19 @@
 .background {
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
   min-height: 100vh;
   padding: 4rem 20px;
   box-sizing: border-box;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .container {
   width: 100%;
   max-width: 480px;
-  background-color: #ffffff;
+  background: linear-gradient(145deg, #ffffff 0%, #f6f8ff 100%);
   border-radius: 8px;
   padding: 30px;
   margin: 0 auto;
@@ -74,62 +79,42 @@ input[readonly] {
 }
 
 .button {
-  margin-top: 10px;
+  margin-top: 20px;
   padding: 12px 20px;
-  background: linear-gradient(135deg, #ff6600, #ffcc00);
-  color: white;
-  border: 2px solid #ff9900;
-  border-radius: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 4px 4px 0px #e65100;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  box-shadow: none;
 }
 
 .button:hover {
-  background-color: #e65c00;
-  transform: scale(1.03);
-  box-shadow: 6px 6px 0px #e65100;
+  background-color: #2980b9;
+  transform: none;
 }
 
 .voltarBtn {
-  margin-left: 15px;
+  background-color: #ecf0f1;
+  color: #333;
+  border: 1px solid #bdc3c7;
+  box-shadow: none;
+  transition: background-color 0.2s ease;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
   margin-top: 20px;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #ffff22, #ff0798); 
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 18px rgba(255, 87, 34, 0.4);
-  position: relative;
-  overflow: hidden;
-}
-
-.voltarBtn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: skewX(-25deg);
-  transition: 0.5s;
-}
-
-.voltarBtn:hover::before {
-  left: 125%;
 }
 
 .voltarBtn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 24px rgba(255, 87, 34, 0.6); 
+  background-color: #dadedf;
+  transform: none;
+  box-shadow: none;
 }
-
 
 @media (max-width: 480px) {
   .voltarBtn {
