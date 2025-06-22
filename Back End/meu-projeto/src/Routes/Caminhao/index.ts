@@ -3,8 +3,14 @@ import {  atualizaCaminhao, getAllCaminhoes, getCaminhaoPorId, gravaNovoCaminhao
 
 const router: Router = express.Router(); 
 
-router.get("/", async (req, res) => { 
-  res.json(await getAllCaminhoes());
+router.get("/", async (req, res) => {
+  try {
+    const lista = await getAllCaminhoes();
+    res.json(lista);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ erro: "Falha ao buscar caminhões" });
+  }
 });
 
 router.get("/:id", async (req, res) => { 

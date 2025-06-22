@@ -1,5 +1,4 @@
 services:
-  # SERVIÇO DO BANCO DE DADOS MYSQL
   db:
     image: mysql:8.0
     container_name: meu-app-mysql
@@ -12,6 +11,7 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     ports:
       - "3307:3306"
 
@@ -21,6 +21,10 @@ services:
     restart: always
     env_file:
       - ./Back End/meu-projeto/.env
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USER=meuapp
     depends_on:
       - db
 
@@ -29,16 +33,16 @@ services:
     container_name: meu-app-frontend
     volumes:
       - build_frontend:/app/dist
+    command: sh -c "npm run build && tail -f /dev/null"
 
   nginx:
     build: ./nginx/
     container_name: meu-app-nginx
     ports:
       - "80:80"
-      - "443:443" # Descomente se for usar HTTPS
+      - "443:443" 
     volumes:
       - build_frontend:/var/www/frontend:ro
-      # - ./caminho/para/certs:/etc/nginx/certs:ro
     depends_on:
       - backend
       - frontend

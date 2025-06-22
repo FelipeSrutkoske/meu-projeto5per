@@ -1,7 +1,5 @@
-# .gitignore do Backend
 .env
-# Pasta de build
 /dist
-
-# Dependências
 /node_modules
+/src/database
+
