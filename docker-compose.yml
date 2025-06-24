@@ -50,3 +50,7 @@ services:
 volumes:
   mysql_data:
   build_frontend:
+
+networks:
+  public:
+  internal:

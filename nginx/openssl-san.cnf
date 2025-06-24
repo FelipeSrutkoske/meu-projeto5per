@@ -1,0 +1,22 @@
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+req_extensions = req_ext
+distinguished_name = dn
+
+[dn]
+C = BR
+ST = PR
+L = Parana
+O = Empreendize
+OU = Felipe Luiz LTDA - ME
+CN = empreendize.local
+
+[req_ext]
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = empreendize.local
+DNS.2 = localhost
+DNS.3 = 127.0.0.1 
