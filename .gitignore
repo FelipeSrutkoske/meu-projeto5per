@@ -8,3 +8,10 @@
 .vscode/tasks.json
 .vscode/launch.json
 .vscode/extensions.json
+
+/nginx/openssl-san.cnf
+/nginx/cert.pem
+/nginx/chave.pem
+/nginx/cert.pem
+
+/nginx/certs/
